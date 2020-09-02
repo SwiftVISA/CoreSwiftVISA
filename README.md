@@ -1,3 +1,3 @@
 # CoreSwiftVISA
 
-A description of this package.
+A VISA backend written in Swift. Once more mature, SwiftVISA will use this backend rather than the current C backend.
