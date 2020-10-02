@@ -1,7 +1,7 @@
 import XCTest
 @testable import CoreSwiftVISA
 
-/// Tests for communicating with a Keysight E36103B Oscilliscope.
+/// Tests for communicating with a Keysight E36103B Oscilliscope over TCPIP.
 final class TCPIPCommunicatorTests: XCTestCase {
 	/// The communicator to use for the tests.
 	static var communicator: TCPIPCommunicator!
@@ -22,7 +22,7 @@ final class TCPIPCommunicatorTests: XCTestCase {
 		let command = "OUTPUT ON"
 		
 		do {
-			try Self.communicator.write(string: command)
+			try Self.communicator.write(command)
 		} catch {
 			XCTFail("Failed to write \"\(command)\" with error: \(error)")
 		}
@@ -36,7 +36,7 @@ final class TCPIPCommunicatorTests: XCTestCase {
 		let command = "VOLTAGE?"
 		
 		do {
-			try Self.communicator.write(string: command)
+			try Self.communicator.write(command)
 			_ = try Self.communicator.read()
 		} catch {
 			XCTFail("Failed to read \"\(command)\" with error: \(error)")
@@ -51,7 +51,7 @@ final class TCPIPCommunicatorTests: XCTestCase {
 		let command = "OUTPUT OFF"
 		
 		do {
-			try Self.communicator.write(string: command)
+			try Self.communicator.write(command)
 		} catch {
 			XCTFail("Failed to write \"\(command)\" with error: \(error)")
 		}
@@ -59,6 +59,7 @@ final class TCPIPCommunicatorTests: XCTestCase {
 			_ = try Self.communicator.read()
 			XCTFail("Read when no text returned \"\(command)\"")
 		} catch {
+			// We want this to throw
 			return
 		}
 	}

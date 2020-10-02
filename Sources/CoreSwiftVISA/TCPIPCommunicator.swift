@@ -12,6 +12,8 @@ import Socket
 public final class TCPIPCommunicator {
 	/// The socket used for communicating with the instrument.
 	internal let socket: Socket
+	/// Attributes to control the communication with the instrument.
+	public var attributes = CommunicatorAttributes()
 	/// Tries to create an instance from the specified address, and port of the instrument. A timeout value must also be specified.
 	///
 	/// - Parameters:
@@ -56,32 +58,82 @@ public final class TCPIPCommunicator {
 
 // MARK: Communicator
 extension TCPIPCommunicator: Communicator {
-	/// Reads a message from the instrument.
-	///
-	/// - Throws: If a reading or decoding error occurred.
-	///
-	/// - Returns: The message string returned by the instrument.
-	public func read() throws -> String {
-		// The message may not fit in a single buffer (only 1024 bytes). To overcome this, we continue to request data until we are at the end of the message.
-		// NS-VISA specifies that messages should end in a new line character, so we continue to append values to `string` until it ends in "\n".
-		var string = ""
+	public func read(
+		until terminator: String,
+		strippingTerminator: Bool,
+		encoding: String.Encoding,
+		chunkSize: Int
+	) throws -> String {
+		// The message may not fit in a single chunk. To overcome this, we continue to request data until we are at the end of the message.
+		// Continue until `string` ends in the terminator.
+		var string = String()
+		var chunk = Data(capacity: chunkSize)
+		
+		socket.readBufferSize = chunkSize
+		
 		repeat {
 			do {
-				guard let substring = try socket.readString() else { throw Error.failedReadOperation }
+				let bytesRead = try socket.read(into: &chunk)
+				
+				guard let substring = String(bytes: chunk[..<bytesRead], encoding: encoding)
+				else {
+					throw Error.couldNotDecode
+				}
+				
 				string += substring
-			} catch { throw Error.failedReadOperation }
-		} while !string.hasSuffix("\n")
-		// Remove the trailing "\n"
-		return String(string.dropLast())
-	}
-	/// Sends a string to the instrument.
-	/// - Parameter string: The string to send to the instrument.
-	public func write(string: String) throws {
-		do {
-			try socket.write(from: string)
-		} catch {
-			throw Error.failedWriteOperation
+				
+				if bytesRead == 0 {
+					// No more data to read (even if we aren't at the terminating characters)
+					if string.count == 0 {
+						// No data read at all
+						throw Error.failedReadOperation
+					}
+					
+					break
+				}
+			}
+		} while !string.contains(terminator)
+		
+		if let terminatorRange = string.range(of: terminator) {
+			if strippingTerminator {
+				return String(string[..<terminatorRange.lowerBound])
+			} else {
+				return String(string[..<terminatorRange.upperBound])
+			}
 		}
+		
+		return string
+	}
+	
+	public func readBytes(_ count: Int, chunkSize: Int) throws -> Data {
+		#warning("Not implemented")
+		fatalError("Not implemented")
+	}
+	
+	public func readBytes(
+		until terminator: Data,
+		strippingTerminator: Bool,
+		chunkSize: Int, maxBytes: Int?
+	) throws -> Data {
+		#warning("Not implemented")
+		fatalError("Not implemented")
+	}
+	
+	public func write(_ string: String,
+										appending terminator: String?,
+										encoding: String.Encoding
+	) throws {
+		try (string + (terminator ?? ""))
+			.cString(using: encoding)?
+			.withUnsafeBufferPointer() { buffer -> () in
+				// The C String includes a null terminated byte -- we will discard this
+				try socket.write(from: buffer.baseAddress!, bufSize: buffer.count - 1)
+			}
+	}
+	
+	public func writeBytes(_: Data, appending terminator: Data?) throws {
+		#warning("Not implemented")
+		fatalError("Not implemented")
 	}
 }
 
