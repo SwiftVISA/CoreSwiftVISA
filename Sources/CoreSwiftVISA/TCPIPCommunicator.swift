@@ -83,7 +83,7 @@ extension TCPIPCommunicator: Communicator {
 				string += substring
 				
 				if bytesRead == 0 {
-					// No more data to read (even if we aren't at the terminating characters)
+					// No more data to read (even if we aren't at the terminator)
 					if string.count == 0 {
 						// No data read at all
 						throw Error.failedReadOperation
@@ -92,9 +92,10 @@ extension TCPIPCommunicator: Communicator {
 					break
 				}
 			}
+			// TODO: don't check the whole string for containing the terminator, only check the last chunk and enough characters before in case the terminator is split over multiple chunks
 		} while !string.contains(terminator)
 		
-		if let terminatorRange = string.range(of: terminator) {
+		if let terminatorRange = string.range(of: terminator, options: .backwards) {
 			if strippingTerminator {
 				return String(string[..<terminatorRange.lowerBound])
 			} else {
@@ -106,8 +107,25 @@ extension TCPIPCommunicator: Communicator {
 	}
 	
 	public func readBytes(_ count: Int, chunkSize: Int) throws -> Data {
-		#warning("Not implemented")
-		fatalError("Not implemented")
+		var data = Data(capacity: max(count, chunkSize))
+		var chunk = Data(capacity: chunkSize)
+		
+		socket.readBufferSize = chunkSize
+		
+		repeat {
+			do {
+				let bytesRead = try socket.read(into: &chunk)
+				
+				data.append(chunk)
+				
+				if bytesRead == 0 {
+					// No more data to read
+					return data
+				}
+			}
+		} while data.count < count
+		
+		return data[..<count]
 	}
 	
 	public func readBytes(
@@ -115,8 +133,39 @@ extension TCPIPCommunicator: Communicator {
 		strippingTerminator: Bool,
 		chunkSize: Int, maxBytes: Int?
 	) throws -> Data {
-		#warning("Not implemented")
-		fatalError("Not implemented")
+		var data = Data(capacity: max(maxBytes ?? chunkSize, chunkSize))
+		var chunk = Data(capacity: chunkSize)
+		
+		socket.readBufferSize = chunkSize
+		
+		repeat {
+			do {
+				let bytesRead = try socket.read(into: &chunk)
+				
+				data.append(chunk)
+				
+				if bytesRead == 0 {
+					// No more data to read (even if we aren't at the terminator)
+					return data
+				}
+			}
+			// TODO: Don't need to search all of the held data, only need to seach the last chunk and some extra in case the terminator data falls over multiple chunks.
+		} while data.range(of: terminator, options: .backwards) == nil
+			&& data.count < (maxBytes ?? .max)
+		
+		if let range = data.range(of: terminator, options: .backwards) {
+			let distance = data.distance(
+				from: data.startIndex,
+				to: strippingTerminator ? range.startIndex : range.endIndex)
+			let endIndex = min(maxBytes ?? .max, distance)
+			return data[..<endIndex]
+		}
+		
+		if data.count > (maxBytes ?? .max) {
+			return data[..<maxBytes!]
+		}
+		
+		return data
 	}
 	
 	public func write(_ string: String,
@@ -131,9 +180,9 @@ extension TCPIPCommunicator: Communicator {
 			}
 	}
 	
-	public func writeBytes(_: Data, appending terminator: Data?) throws {
-		#warning("Not implemented")
-		fatalError("Not implemented")
+	public func writeBytes(_ data: Data, appending terminator: Data?) throws {
+		let data = data + (terminator ?? Data())
+		try socket.write(from: data)
 	}
 }
 
