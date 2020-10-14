@@ -4,7 +4,7 @@ import XCTest
 /// Tests for communicating with a Keysight E36103B Oscilliscope over TCPIP.
 final class TCPIPCommunicatorTests: XCTestCase {
 	/// The communicator to use for the tests.
-	static var communicator: TCPIPCommunicator!
+	static var communicator: TCPIPInstrument!
 	/// The LAN information for the instrument.
 	static var lanInfo = (address: "169.254.10.1", port: 5025)
 	

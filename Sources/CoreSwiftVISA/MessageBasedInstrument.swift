@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MessageBasedInstrument.swift
 //  
 //
 //  Created by Connor Barnes on 9/13/20.
@@ -7,10 +7,10 @@
 
 import Foundation
 
-/// A channel to communicate to and from an NI-VISA instrument.
-public protocol Communicator {
-	/// Communication attributes, such as terminators and encodings.
-	var attributes: CommunicatorAttributes { get set }
+/// An instrument that can be communicated with via strings or raw bytes.
+public protocol MessageBasedInstrument {
+	/// Instrument attributes, such as terminators and encodings.
+	var attributes: InstrumentAttributes { get set }
 	
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
@@ -70,7 +70,7 @@ public protocol Communicator {
 	func writeBytes(_: Data, appending terminator: Data?) throws
 }
 
-extension Communicator {
+extension MessageBasedInstrument {
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
 	///   - terminator: The string to end reading at. By default, or if `nil`, `attributes.readTerminator` is used.
@@ -165,9 +165,9 @@ public enum CommunicatorError: Error {
 	case couldNotEncode
 }
 
-/// Communication attributes for customizing communication to VISA complient instruments.
-public struct CommunicatorAttributes {
-	/// The string to terminate messages with when reading from an instrument.
+/// Instrument attributes for customizing communication to VISA complient instruments.
+public struct InstrumentAttributes {
+	/// The string to terminate messages with when reading from an instrument.s
 	public var readTerminator = "\n"
 	/// The string to terminate messages with when writing to an instrument.
 	public var writeTerminator = "\n"

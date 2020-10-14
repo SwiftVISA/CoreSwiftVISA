@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TCPIPInstrument.swift
 //  
 //
 //  Created by Connor Barnes on 9/13/20.
@@ -8,12 +8,12 @@
 import Foundation
 import Socket
 
-/// A class for communicating with an instrumnet over TCP-IP.
-public final class TCPIPCommunicator {
+/// An instrument connected over TCP-IP.
+public final class TCPIPInstrument {
 	/// The socket used for communicating with the instrument.
 	internal let socket: Socket
 	/// Attributes to control the communication with the instrument.
-	public var attributes = CommunicatorAttributes()
+	public var attributes = InstrumentAttributes()
 	/// Tries to create an instance from the specified address, and port of the instrument. A timeout value must also be specified.
 	///
 	/// - Parameters:
@@ -57,7 +57,7 @@ public final class TCPIPCommunicator {
 }
 
 // MARK: Communicator
-extension TCPIPCommunicator: Communicator {
+extension TCPIPInstrument: MessageBasedInstrument {
 	public func read(
 		until terminator: String,
 		strippingTerminator: Bool,
@@ -187,7 +187,7 @@ extension TCPIPCommunicator: Communicator {
 }
 
 // MARK:- Error
-extension TCPIPCommunicator {
+extension TCPIPInstrument {
 	/// An error associated with a `TCPIPCommunicator`.
 	///
 	/// - `couldNotCreateSocket`: The socket to communicate with the instrument could not be created.
@@ -209,7 +209,7 @@ extension TCPIPCommunicator {
 }
 
 // MARK: Error Descriptions
-extension TCPIPCommunicator.Error {
+extension TCPIPInstrument.Error {
 	public var localizedDescription: String {
 		switch self {
 		case .couldNotConnect:

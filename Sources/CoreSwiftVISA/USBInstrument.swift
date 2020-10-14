@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  USBInstrument.swift
 //  
 //
 //  Created by Connor Barnes on 9/13/20.
@@ -9,7 +9,7 @@ import Foundation
 import SwiftSerial
 
 
-public final class SerialCommunicator {
+public final class USBInstrument {
 	static func listPorts() {
 		#if canImport(IOKit)
 		let ports = comports()
@@ -21,7 +21,7 @@ public final class SerialCommunicator {
 #if canImport(IOKit)
 import IOKit
 
-extension SerialCommunicator {
+extension USBInstrument {
 	internal struct Interface {
 		var name: String
 		var id: Int

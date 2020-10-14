@@ -4,10 +4,10 @@ import XCTest
 /// Tests for communicating with a Keysight E36103B Oscilliscope over Serial.
 final class SerialCommunicatorTests: XCTestCase {
 	/// The communicator to use for the tests.
-	static var communicator: SerialCommunicator!
+	static var communicator: USBInstrument!
 	
 	func testList() {
-		SerialCommunicator.listPorts()
+		USBInstrument.listPorts()
 	}
 	
 	static var allTests = [
