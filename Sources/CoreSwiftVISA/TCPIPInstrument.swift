@@ -106,8 +106,8 @@ extension TCPIPInstrument: MessageBasedInstrument {
 		return string
 	}
 	
-	public func readBytes(_ count: Int, chunkSize: Int) throws -> Data {
-		var data = Data(capacity: max(count, chunkSize))
+	public func readBytes(length: Int, chunkSize: Int) throws -> Data {
+		var data = Data(capacity: max(length, chunkSize))
 		var chunk = Data(capacity: chunkSize)
 		
 		socket.readBufferSize = chunkSize
@@ -123,17 +123,18 @@ extension TCPIPInstrument: MessageBasedInstrument {
 					return data
 				}
 			}
-		} while data.count < count
+		} while data.count < length
 		
-		return data[..<count]
+		return data[..<length]
 	}
 	
 	public func readBytes(
+		maxLength: Int?,
 		until terminator: Data,
 		strippingTerminator: Bool,
-		chunkSize: Int, maxBytes: Int?
+		chunkSize: Int
 	) throws -> Data {
-		var data = Data(capacity: max(maxBytes ?? chunkSize, chunkSize))
+		var data = Data(capacity: max(maxLength ?? chunkSize, chunkSize))
 		var chunk = Data(capacity: chunkSize)
 		
 		socket.readBufferSize = chunkSize
@@ -151,18 +152,18 @@ extension TCPIPInstrument: MessageBasedInstrument {
 			}
 			// TODO: Don't need to search all of the held data, only need to seach the last chunk and some extra in case the terminator data falls over multiple chunks.
 		} while data.range(of: terminator, options: .backwards) == nil
-			&& data.count < (maxBytes ?? .max)
+			&& data.count < (maxLength ?? .max)
 		
 		if let range = data.range(of: terminator, options: .backwards) {
 			let distance = data.distance(
 				from: data.startIndex,
 				to: strippingTerminator ? range.startIndex : range.endIndex)
-			let endIndex = min(maxBytes ?? .max, distance)
+			let endIndex = min(maxLength ?? .max, distance)
 			return data[..<endIndex]
 		}
 		
-		if data.count > (maxBytes ?? .max) {
-			return data[..<maxBytes!]
+		if data.count > (maxLength ?? .max) {
+			return data[..<maxLength!]
 		}
 		
 		return data

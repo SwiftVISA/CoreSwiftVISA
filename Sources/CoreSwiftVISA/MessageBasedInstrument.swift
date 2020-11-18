@@ -29,25 +29,25 @@ public protocol MessageBasedInstrument {
 	
 	/// Reads the given number of bytes from the device.
 	/// - Parameters:
-	///   - count: The number of bytes to read.
+	///   - length: The number of bytes to read.
 	///   - chunkSize: The number of bytes to read into a buffer at a time.
 	/// - Throws: If the device could not be read from.
 	/// - Returns: The bytes read from the device.
-	func readBytes(_ count: Int, chunkSize: Int) throws -> Data
+	func readBytes(length: Int, chunkSize: Int) throws -> Data
 	
 	/// Reads bytes from the device until the given sequence of data is reached.
 	/// - Parameters:
+	///   - maxLength: The maximum number of bytes to read.
 	///   - terminator: The byte sequence to end reading at.
 	///   - strippingTerminator: If `true`, the terminator is stripped from the data before being returned, otherwise the data is returned with the terminator at the end.
 	///   - chunkSize: The number of bytes to read into a buffer at a time.
-	///   - maxBytes: The maximum number of bytes to read.
 	/// - Throws: If the device could not be read from.
 	/// - Returns: The bytes read from the device.
 	func readBytes(
+		maxLength: Int?,
 		until terminator: Data,
 		strippingTerminator: Bool,
-		chunkSize: Int,
-		maxBytes: Int?
+		chunkSize: Int
 	) throws -> Data
 	
 	/// Writes a string to the device.
@@ -70,7 +70,7 @@ public protocol MessageBasedInstrument {
 	func writeBytes(_: Data, appending terminator: Data?) throws
 }
 
-extension MessageBasedInstrument {
+public extension MessageBasedInstrument {
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
 	///   - terminator: The string to end reading at. By default, or if `nil`, `attributes.readTerminator` is used.
@@ -94,38 +94,38 @@ extension MessageBasedInstrument {
 	
 	/// Reads the given number of bytes from the device.
 	/// - Parameters:
-	///   - count: The number of bytes to read.
+	///   - length: The number of bytes to read.
 	///   - chunkSize: The number of bytes to read into a buffer at a time. By default, or if `nil`, `attributes.chunkSize` is used.
 	/// - Throws: If the device could not be read from.
 	/// - Returns: The bytes read from the device.
-	func readBytes(_ count: Int, chunkSize: Int? = nil) throws -> Data {
-		return try readBytes(count, chunkSize: chunkSize ?? attributes.chunkSize)
+	func readBytes(length: Int, chunkSize: Int? = nil) throws -> Data {
+		return try readBytes(length: length, chunkSize: chunkSize ?? attributes.chunkSize)
 	}
 	
 	/// Reads bytes from the device until the given sequence of data is reached.
 	/// - Parameters:
+	///   - maxLength: The maximum number of bytes to read. `nil` by default.
 	///   - terminator: The byte sequence to end reading at. By default, or if `nil`, `attributes.readTerminator` is used.
 	///   - strippingTerminator: If `true`, the terminator is stripped from the data before being returned, otherwise the data is returned with the terminator at the end. `true` by default.
 	///   - chunkSize: The number of bytes to read into a buffer at a time. By default, or if `nil`, `attributes.chunkSize` is used.
-	///   - maxBytes: The maximum number of bytes to read. `nil` by default.
 	/// - Throws: If the device could not be read from.
 	/// - Returns: The bytes read from the device.
 	func readBytes(
+		maxLength: Int? = nil,
 		until terminator: Data? = nil,
 		strippingTerminator: Bool = true,
-		chunkSize: Int? = nil,
-		maxBytes: Int? = nil)
-	throws -> Data {
+		chunkSize: Int? = nil
+	) throws -> Data {
 		guard let terminator = terminator ??
 						attributes.readTerminator.data(using: attributes.encoding) else {
 			throw CommunicatorError.couldNotEncode
 		}
 		
 		return try readBytes(
+			maxLength: maxLength,
 			until: terminator,
 			strippingTerminator: strippingTerminator,
-			chunkSize: chunkSize ?? attributes.chunkSize,
-			maxBytes: maxBytes)
+			chunkSize: chunkSize ?? attributes.chunkSize)
 	}
 	
 	/// Writes a string to the device.
