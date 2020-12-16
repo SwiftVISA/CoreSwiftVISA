@@ -177,5 +177,7 @@ public struct InstrumentAttributes {
 	public var chunkSize = 1024
 	/// The string encoding to use when decoding from the instrument, or when encoding to write to the instrument.
 	public var encoding: String.Encoding = .utf8
+	
+	public init() { }
 }
 
