@@ -8,7 +8,7 @@
 import Foundation
 
 /// An instrument that can be communicated with via strings or raw bytes.
-public protocol MessageBasedInstrument {
+public protocol MessageBasedInstrument: Instrument {
 	/// Instrument attributes, such as terminators and encodings.
 	var attributes: InstrumentAttributes { get set }
 	
