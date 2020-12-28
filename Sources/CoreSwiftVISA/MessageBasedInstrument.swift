@@ -171,8 +171,10 @@ public struct MessageBasedInstrumentAttributes {
 	public var readTerminator = "\n"
 	/// The string to terminate messages with when writing to an instrument.
 	public var writeTerminator = "\n"
-	/// The delay in seconds between reading to a device after writing to it.
-	public var queryDelay: TimeInterval = 1e-3
+	/// The delay in seconds to wait before reading or writing. Some instruments will fail when writing to or reading from in too short succession.
+	///
+	/// - Note: It is the responsibility of the type adopting this protocol to respect this delay.
+	public var operationDelay: TimeInterval = 1e-3
 	/// The size in bytes to read data from the instrument at a time.
 	public var chunkSize = 1024
 	/// The string encoding to use when decoding from the instrument, or when encoding to write to the instrument.
