@@ -7,13 +7,14 @@
 
 import Foundation
 
-extension MessageBasedInstrument {
+public extension MessageBasedInstrument {
 	/// Writes a string to the instrument, then reads back the response from the instrument.
 	/// - Parameter string: The string to write to the instrument.
 	/// - Throws: If the insturment could not be written to or read from.
 	/// - Returns: The instrument's response.
 	func query(_ string: String) throws -> String {
 		try write(string)
+		usleep(useconds_t(1_000_000.0 * attributes.queryDelay))
 		return try read()
 	}
 	/// Writes a string to the instrument, then reads back the response from the instrument and decodes it to the specified type using the given decoder.
@@ -29,6 +30,7 @@ extension MessageBasedInstrument {
 		using decoder: D
 	) throws -> T where D.DecodingType == T {
 		try write(string)
+		usleep(useconds_t(1_000_000.0 * attributes.queryDelay))
 		return try read(as: type, using: decoder)
 	}
 	/// Writes a string to the instrument, then reads back the response from the instrument and decodes it to the specified type using the type's defualt decoder.
@@ -60,6 +62,7 @@ extension MessageBasedInstrument {
 		using decoder: D
 	) throws -> T where D.DecodingType == T {
 		try writeBytes(bytes)
+		usleep(useconds_t(1_000_000.0 * attributes.queryDelay))
 		return try readBytes(length: length,
 												 as: type,
 												 using: decoder)
@@ -96,6 +99,7 @@ extension MessageBasedInstrument {
 		using decoder: D
 	) throws -> T where D.DecodingType == T {
 		try writeBytes(bytes)
+		usleep(useconds_t(1_000_000.0 * attributes.queryDelay))
 		return try readBytes(maxLength: maxLength,
 												 as: type,
 												 using: decoder)

@@ -10,7 +10,7 @@ import Foundation
 /// An instrument that can be communicated with via strings or raw bytes.
 public protocol MessageBasedInstrument: Instrument {
 	/// Instrument attributes, such as terminators and encodings.
-	var attributes: InstrumentAttributes { get set }
+	var attributes: MessageBasedInstrumentAttributes { get set }
 	
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
@@ -166,13 +166,13 @@ public enum CommunicatorError: Error {
 }
 
 /// Instrument attributes for customizing communication to VISA complient instruments.
-public struct InstrumentAttributes {
+public struct MessageBasedInstrumentAttributes {
 	/// The string to terminate messages with when reading from an instrument.s
 	public var readTerminator = "\n"
 	/// The string to terminate messages with when writing to an instrument.
 	public var writeTerminator = "\n"
 	/// The delay in seconds between reading to a device after writing to it.
-	public var queryDelay: TimeInterval = 0.0
+	public var queryDelay: TimeInterval = 1e-3
 	/// The size in bytes to read data from the instrument at a time.
 	public var chunkSize = 1024
 	/// The string encoding to use when decoding from the instrument, or when encoding to write to the instrument.
