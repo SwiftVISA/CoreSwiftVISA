@@ -67,7 +67,9 @@ public protocol MessageBasedInstrument: Instrument {
 	///   - bytes: The data to write to the device.
 	///   - terminator: The sequence of bytes to append to the end of `bytes`.
 	/// - Throws: If the device could not be written to.
-	func writeBytes(_: Data, appending terminator: Data?) throws
+	/// - Returns: The number of bytes that were written.
+	@discardableResult
+	func writeBytes(_ data: Data, appending terminator: Data?) throws -> Int
 }
 
 public extension MessageBasedInstrument {
