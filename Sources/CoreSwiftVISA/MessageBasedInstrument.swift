@@ -56,11 +56,13 @@ public protocol MessageBasedInstrument: Instrument {
 	///   - terminator: The terminator to add to the end of `string`.
 	///   - encoding: The method to encode the string with.
 	/// - Throws: If the device could not be written to.
+	/// - Returns: The number of bytes that were written.
+	@discardableResult
 	func write(
 		_ string: String,
 		appending terminator: String?,
 		encoding: String.Encoding
-	) throws
+	) throws -> Int
 	
 	/// Writes bytes to the device.
 	/// - Parameters:
@@ -136,11 +138,13 @@ public extension MessageBasedInstrument {
 	///   - terminator: The terminator to add to the end of `string`. By default, or if `nil`, `attributes.writeTerminator` is used.
 	///   - encoding: The method to encode the string with. By default, or if `nil`, `attributes.encoding` is used.
 	/// - Throws: If the device could not be written to.
+	/// - Returns: The number of bytes that were written.
+	@discardableResult
 	func write(
 		_ string: String,
 		appending terminator: String?? = .some(nil),
 		encoding: String.Encoding? = nil
-	) throws {
+	) throws -> Int {
 		try write(
 			string,
 			appending: terminator ?? attributes.writeTerminator,
@@ -152,13 +156,15 @@ public extension MessageBasedInstrument {
 	///   - bytes: The data to write to the device.
 	///   - terminator: The sequence of bytes to append to the end of `bytes`. By default, or if `nil`, `attributes.terminator` is used.
 	/// - Throws: If the device could not be written to.
-	func writeBytes(_ bytes: Data, appending terminator: Data?? = .some(nil)) throws {
+	/// - Returns: The number of bytes that were written.
+	@discardableResult
+	func writeBytes(_ bytes: Data, appending terminator: Data?? = .some(nil)) throws -> Int {
 		guard let terminator = terminator ??
 						attributes.writeTerminator.data(using: attributes.encoding) else {
 			throw CommunicatorError.couldNotEncode
 		}
 		
-		try writeBytes(bytes, appending: terminator)
+		return try writeBytes(bytes, appending: terminator)
 	}
 }
 
