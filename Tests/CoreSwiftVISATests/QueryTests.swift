@@ -37,5 +37,6 @@ final class QueryTests: XCTestCase {
 	
 	static var allTests = [
 		("testQuery", testQuery),
+		("testCustomDecoder", testCustomDecoder)
 	]
 }
