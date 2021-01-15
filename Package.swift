@@ -24,5 +24,6 @@ let package = Package(
 		.testTarget(
 			name: "CoreSwiftVISATests",
 			dependencies: ["CoreSwiftVISA"]),
-	]
+	],
+	swiftLanguageVersions: [.v5]
 )
