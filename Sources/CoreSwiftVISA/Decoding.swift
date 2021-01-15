@@ -203,7 +203,7 @@ public struct DefaultDoubleDecoder: MessageDecoder {
 	/// A helper function that uses the SCPI standard to convert to ±∞ or `NaN`.
 	/// - Parameter value: The value to decode.
 	/// - Throws: `DefaultDoubleDecoder.notInRange` if the provided value is outside the valid range of SCPI numerical values.
-	/// - Returns: <#description#>
+	/// - Returns: Returns a validated number.
 	private func validate(_ value: Double) throws -> Double {
 		let tolerance = 9.9e37 / 1000.0
 		

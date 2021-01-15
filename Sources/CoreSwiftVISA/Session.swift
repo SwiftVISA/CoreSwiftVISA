@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Session.swift
 //  
 //
 //  Created by Connor Barnes on 12/28/20.
