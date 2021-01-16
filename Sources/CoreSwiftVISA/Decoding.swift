@@ -7,7 +7,7 @@
 
 import Foundation
 
-// MARK: Message Decoding
+// MARK:- Message Decoding
 /// A type that provides a default message decoder.
 ///
 /// Conforming to `MessageDecodable` allows `read(as:)` and `decode(_:as:)` to be called without specifying an explicit decoder.
@@ -29,7 +29,7 @@ public protocol MessageDecoder {
 	func decode(_ message: String) throws -> DecodingType
 }
 
-// MARK: Byte Decoding
+// MARK:- Byte Decoding
 /// A type that provides a default byte decoder.
 ///
 /// Conforming to `ByteDecodable` allows `readBytes(as:)` or `queryBytes(_:as:)` to be called without specifying an explicit decoder.
@@ -49,7 +49,7 @@ public protocol ByteDecoder {
 	func decode(_ bytes: Data) throws -> DecodingType
 }
 
-// MARK: Default String Decoder
+// MARK:- Default String Decoder
 /// The default message decoder for `String`.
 ///
 /// By default, this decoder simply returns the message verbatim.
@@ -57,7 +57,6 @@ public protocol ByteDecoder {
 /// The default behavior can be changed by assigning a custom decoding function to the static property `customDecode`. If you would like to revert to default behavior, set `customDecode` to `nil`.
 public struct DefaultStringDecoder: MessageDecoder {
 	public typealias DecodingType = String
-	
 	/// Decodes a message from a VISA instrument as a `String`.
 	///
 	/// By default, simply returns the message verbatim.
@@ -84,7 +83,7 @@ extension String: MessageDecodable {
 	}
 }
 
-// MARK: Default Int Decoder
+// MARK:- Default Int Decoder
 /// The default message decoder for `Int`.
 ///
 /// By default, this decoder strips all whitespace. If the message begins with `0b`, `0o`, or `0x` the value will be decoded as a binary, octal, or hexadecimal value respectively. Otherwise, the number is decoded as a decimal integer. The message may contain a period, but must still be an exact integer, otherwise, `DefaultIntDecoder.Error.notAnInteger` is thrown. If the message can not be interpreted as a number, then `DefaultIntDecoder.Error.notANumber` is thrown. If a value outside of the range [`Int.min`, `Int.max`] is given, then `DefaultIntDercoder.Error.notInRange` is thrown.
@@ -192,7 +191,7 @@ extension Int: MessageDecodable {
 	}
 }
 
-// MARK: Default Double Decoder
+// MARK:- Default Double Decoder
 /// The default message decoder for `Double`.
 ///
 /// By default, all whitespace is stripped. Exponents may be included as `e` or `E`. In accordance with SCPI standards, the value `9.9e37` is interpreted as +∞, the value `-9.9e37` is interpreted as -∞, and `9.91e37` is interpreted as `NaN`. If a number outside the range of [`-9.9e37`, `9.9e37`] is given, `DefaultDoubleDecoder.Error.notInRange` is thrown. If the message could not be interpreted as a number, `DefaultDoubleDecoder.Error.notANumber` is thrown.
@@ -269,8 +268,7 @@ extension Double: MessageDecodable {
 		return DefaultDoubleDecoder()
 	}
 }
-
-// MARK: Default Bool Decoder
+// MARK:- Default Bool Decoder
 /// The default message decoder for `Bool`.
 ///
 /// By default, all whitespace is stripped, and the message is converted to lowercase. The following are considered to be `false`: "off", "no", "false", or a number with the exact value of `0`. The following are considered to be `true`: "on", "yes", "true", or a number with the exact value of `1`.

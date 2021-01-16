@@ -19,7 +19,6 @@ extension MessageBasedInstrument {
 		let string = try read()
 		return try decoder.decode(string)
 	}
-	
 	/// Reads a message from the instrument and decodes it to the specified type using the type's default decoder.
 	/// - Parameter type: The type to decode the message to.
 	/// - Throws: If the message could not be read from the instrument, or if the messag could not be decoded.

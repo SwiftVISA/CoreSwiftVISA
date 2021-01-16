@@ -87,7 +87,7 @@ class DecoderTests: XCTestCase {
 			}
 		}
 	}
-	/// Tests the default double decoder
+	/// Tests the default double decoder.
 	func testDefaultDoubleDecoder() {
 		let decoder = DefaultDoubleDecoder()
 		

@@ -28,8 +28,8 @@ class MockSession: Session {
 	}
 }
 
+// MARK:- MessageBasedInstrument
 extension MockInstrument: MessageBasedInstrument {
-	
 	func writeBytes(_: Data, appending terminator: Data?) throws -> Int {
 		fatalError("Not implemented")
 	}

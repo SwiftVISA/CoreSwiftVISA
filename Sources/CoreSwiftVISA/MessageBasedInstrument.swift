@@ -11,7 +11,6 @@ import Foundation
 public protocol MessageBasedInstrument: Instrument {
 	/// Instrument attributes, such as terminators and encodings.
 	var attributes: MessageBasedInstrumentAttributes { get set }
-	
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
 	///   - terminator: The string to end reading at.
@@ -26,7 +25,6 @@ public protocol MessageBasedInstrument: Instrument {
 		encoding: String.Encoding,
 		chunkSize: Int
 	) throws -> String
-	
 	/// Reads the given number of bytes from the device.
 	/// - Parameters:
 	///   - length: The number of bytes to read.
@@ -34,7 +32,6 @@ public protocol MessageBasedInstrument: Instrument {
 	/// - Throws: If the device could not be read from.
 	/// - Returns: The bytes read from the device.
 	func readBytes(length: Int, chunkSize: Int) throws -> Data
-	
 	/// Reads bytes from the device until the given sequence of data is reached.
 	/// - Parameters:
 	///   - maxLength: The maximum number of bytes to read.
@@ -49,7 +46,6 @@ public protocol MessageBasedInstrument: Instrument {
 		strippingTerminator: Bool,
 		chunkSize: Int
 	) throws -> Data
-	
 	/// Writes a string to the device.
 	/// - Parameters:
 	///   - string: The string to write to the device.
@@ -63,7 +59,6 @@ public protocol MessageBasedInstrument: Instrument {
 		appending terminator: String?,
 		encoding: String.Encoding
 	) throws -> Int
-	
 	/// Writes bytes to the device.
 	/// - Parameters:
 	///   - bytes: The data to write to the device.
@@ -74,6 +69,7 @@ public protocol MessageBasedInstrument: Instrument {
 	func writeBytes(_ data: Data, appending terminator: Data?) throws -> Int
 }
 
+// MARK:- Convenience Methods
 public extension MessageBasedInstrument {
 	/// Reads string data from the device until the terminator is reached.
 	/// - Parameters:
@@ -95,7 +91,6 @@ public extension MessageBasedInstrument {
 			encoding: encoding ?? attributes.encoding,
 			chunkSize: chunkSize ?? attributes.chunkSize)
 	}
-	
 	/// Reads the given number of bytes from the device.
 	/// - Parameters:
 	///   - length: The number of bytes to read.
@@ -105,7 +100,6 @@ public extension MessageBasedInstrument {
 	func readBytes(length: Int, chunkSize: Int? = nil) throws -> Data {
 		return try readBytes(length: length, chunkSize: chunkSize ?? attributes.chunkSize)
 	}
-	
 	/// Reads bytes from the device until the given sequence of data is reached.
 	/// - Parameters:
 	///   - maxLength: The maximum number of bytes to read. `nil` by default.
@@ -131,7 +125,6 @@ public extension MessageBasedInstrument {
 			strippingTerminator: strippingTerminator,
 			chunkSize: chunkSize ?? attributes.chunkSize)
 	}
-	
 	/// Writes a string to the device.
 	/// - Parameters:
 	///   - string: The string to write to the device.
@@ -150,7 +143,6 @@ public extension MessageBasedInstrument {
 			appending: terminator ?? attributes.writeTerminator,
 			encoding: encoding ?? attributes.encoding)
 	}
-	
 	/// Writes bytes to the device.
 	/// - Parameters:
 	///   - bytes: The data to write to the device.
@@ -168,11 +160,13 @@ public extension MessageBasedInstrument {
 	}
 }
 
+// MARK:- Errors
 /// An generic communicator error.
 public enum CommunicatorError: Error {
 	case couldNotEncode
 }
 
+// MARK:- Attributes
 /// Instrument attributes for customizing communication to VISA complient instruments.
 public struct MessageBasedInstrumentAttributes {
 	/// The string to terminate messages with when reading from an instrument.s
@@ -188,6 +182,20 @@ public struct MessageBasedInstrumentAttributes {
 	/// The string encoding to use when decoding from the instrument, or when encoding to write to the instrument.
 	public var encoding: String.Encoding = .utf8
 	
+	/// Creates the default set of attributes.
 	public init() { }
 }
 
+extension MessageBasedInstrumentAttributes {
+	/// A default set of attributes.
+	///
+	/// The following defaults are used:
+	/// - `readTerminator` is `"\n"`
+	/// - `writeTerminator` is `"\n"`
+	/// - `operationDelay` is 1 millisecond
+	/// - `chunkSize` is 1024 bytes
+	/// - `encoding` is UTF8
+	static var `default`: Self {
+		return .init()
+	}
+}

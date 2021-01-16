@@ -20,5 +20,3 @@ let package = Package(
 	// TODO: Can we target lower versions of Swift?
 	swiftLanguageVersions: [.v5]
 )
-
-

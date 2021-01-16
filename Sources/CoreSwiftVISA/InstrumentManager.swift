@@ -17,7 +17,7 @@ public final class InstrumentManager {
 	internal init() { }
 }
 
-// MARK: Singleton
+// MARK:- Singleton
 extension InstrumentManager {
 	/// The application's shared `InstrumentManager` instance.
 	public static var shared = InstrumentManager()
