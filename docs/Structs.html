@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structures  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Structures" class="dashAnchor"></a>
+    <a title="Structures  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (95% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Structures  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/InstrumentManager.html">InstrumentManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CommunicatorError.html">CommunicatorError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ByteDecodable.html">ByteDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ByteDecoder.html">ByteDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Instrument.html">Instrument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageBasedInstrument.html">MessageBasedInstrument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageDecodable.html">MessageDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageDecoder.html">MessageDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Session.html">Session</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/DefaultBoolDecoder.html">DefaultBoolDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultBoolDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultDoubleDecoder.html">DefaultDoubleDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultDoubleDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultIntDecoder.html">DefaultIntDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultIntDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultStringDecoder.html">DefaultStringDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MessageBasedInstrumentAttributes.html">MessageBasedInstrumentAttributes</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Structures</h1>
+            <p>The following structures are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA20DefaultStringDecoderV"></a>
+                    <a name="//apple_ref/swift/Struct/DefaultStringDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA20DefaultStringDecoderV">DefaultStringDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default message decoder for <code>String</code>.</p>
+
+<p>By default, this decoder simply returns the message verbatim.</p>
+
+<p>The default behavior can be changed by assigning a custom decoding function to the static property <code>customDecode</code>. If you would like to revert to default behavior, set <code>customDecode</code> to <code>nil</code>.</p>
+
+                        <a href="Structs/DefaultStringDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DefaultStringDecoder</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MessageDecoder.html">MessageDecoder</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA17DefaultIntDecoderV"></a>
+                    <a name="//apple_ref/swift/Struct/DefaultIntDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA17DefaultIntDecoderV">DefaultIntDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default message decoder for <code>Int</code>.</p>
+
+<p>By default, this decoder strips all whitespace. If the message begins with <code>0b</code>, <code>0o</code>, or <code>0x</code> the value will be decoded as a binary, octal, or hexadecimal value respectively. Otherwise, the number is decoded as a decimal integer. The message may contain a period, but must still be an exact integer, otherwise, <code><a href="Structs/DefaultIntDecoder/Error.html#/s:13CoreSwiftVISA17DefaultIntDecoderV5ErrorO12notAnIntegeryA2EmF">DefaultIntDecoder.Error.notAnInteger</a></code> is thrown. If the message can not be interpreted as a number, then <code><a href="Structs/DefaultIntDecoder/Error.html#/s:13CoreSwiftVISA17DefaultIntDecoderV5ErrorO10notANumberyA2EmF">DefaultIntDecoder.Error.notANumber</a></code> is thrown. If a value outside of the range [<code>Int.min</code>, <code>Int.max</code>] is given, then <code>DefaultIntDercoder.Error.notInRange</code> is thrown.</p>
+
+<p>The default behavior can be changed by assigning a custom decoding function to the static property <code>customDecode</code>. If you would like to revert to default behavior, set <code>customDecode</code> to <code>nil</code>.</p>
+
+                        <a href="Structs/DefaultIntDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DefaultIntDecoder</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MessageDecoder.html">MessageDecoder</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA20DefaultDoubleDecoderV"></a>
+                    <a name="//apple_ref/swift/Struct/DefaultDoubleDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA20DefaultDoubleDecoderV">DefaultDoubleDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default message decoder for <code>Double</code>.</p>
+
+<p>By default, all whitespace is stripped. Exponents may be included as <code>e</code> or <code>E</code>. In accordance with SCPI standards, the value <code>9.9e37</code> is interpreted as +∞, the value <code>-9.9e37</code> is interpreted as -∞, and <code>9.91e37</code> is interpreted as <code>NaN</code>. If a number outside the range of [<code>-9.9e37</code>, <code>9.9e37</code>] is given, <code><a href="Structs/DefaultDoubleDecoder/Error.html#/s:13CoreSwiftVISA20DefaultDoubleDecoderV5ErrorO10notInRangeyA2EmF">DefaultDoubleDecoder.Error.notInRange</a></code> is thrown. If the message could not be interpreted as a number, <code><a href="Structs/DefaultDoubleDecoder/Error.html#/s:13CoreSwiftVISA20DefaultDoubleDecoderV5ErrorO10notANumberyA2EmF">DefaultDoubleDecoder.Error.notANumber</a></code> is thrown.</p>
+
+<p>The default behavior can be changed by assigning a custom decoding function to the static property <code>customDecode</code>. If you would like to revert to default behavior, set <code>customDecode</code> to <code>nil</code>.</p>
+
+                        <a href="Structs/DefaultDoubleDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DefaultDoubleDecoder</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MessageDecoder.html">MessageDecoder</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA18DefaultBoolDecoderV"></a>
+                    <a name="//apple_ref/swift/Struct/DefaultBoolDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA18DefaultBoolDecoderV">DefaultBoolDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default message decoder for <code>Bool</code>.</p>
+
+<p>By default, all whitespace is stripped, and the message is converted to lowercase. The following are considered to be <code>false</code>: &ldquo;off&rdquo;, &ldquo;no&rdquo;, &ldquo;false&rdquo;, or a number with the exact value of <code>0</code>. The following are considered to be <code>true</code>: &ldquo;on&rdquo;, &ldquo;yes&rdquo;, &ldquo;true&rdquo;, or a number with the exact value of <code>1</code>.</p>
+
+<p>The default behavior can be changed by assigning a custom decoding function to the static property <code>customDecode</code>. If you would like to revert to default behavior, set <code>customDecode</code> to <code>nil</code>.</p>
+
+                        <a href="Structs/DefaultBoolDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">DefaultBoolDecoder</span> <span class="p">:</span> <span class="kt"><a href="Protocols/MessageDecoder.html">MessageDecoder</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA32MessageBasedInstrumentAttributesV"></a>
+                    <a name="//apple_ref/swift/Struct/MessageBasedInstrumentAttributes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA32MessageBasedInstrumentAttributesV">MessageBasedInstrumentAttributes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Instrument attributes for customizing communication to VISA complient instruments.</p>
+
+                        <a href="Structs/MessageBasedInstrumentAttributes.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">MessageBasedInstrumentAttributes</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2021-01-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

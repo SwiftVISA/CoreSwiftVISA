@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (95% documented)</p>
+        <p class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/InstrumentManager.html">InstrumentManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/CommunicatorError.html">CommunicatorError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/Bool.html">Bool</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Int.html">Int</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/ByteDecodable.html">ByteDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ByteDecoder.html">ByteDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Instrument.html">Instrument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageBasedInstrument.html">MessageBasedInstrument</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageDecodable.html">MessageDecodable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MessageDecoder.html">MessageDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Session.html">Session</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/DefaultBoolDecoder.html">DefaultBoolDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultBoolDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultDoubleDecoder.html">DefaultDoubleDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultDoubleDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultIntDecoder.html">DefaultIntDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultIntDecoder/Error.html">– Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/DefaultStringDecoder.html">DefaultStringDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/MessageBasedInstrumentAttributes.html">MessageBasedInstrumentAttributes</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA16MessageDecodableP"></a>
+                    <a name="//apple_ref/swift/Protocol/MessageDecodable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA16MessageDecodableP">MessageDecodable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that provides a default message decoder.</p>
+
+<p>Conforming to <code>MessageDecodable</code> allows <code>read(as:)</code> and <code>decode(_:as:)</code> to be called without specifying an explicit decoder.</p>
+
+                        <a href="Protocols/MessageDecodable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MessageDecodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA14MessageDecoderP"></a>
+                    <a name="//apple_ref/swift/Protocol/MessageDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA14MessageDecoderP">MessageDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that can decode a message from a VISA instrument and convert it into another type.</p>
+
+                        <a href="Protocols/MessageDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MessageDecoder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA13ByteDecodableP"></a>
+                    <a name="//apple_ref/swift/Protocol/ByteDecodable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA13ByteDecodableP">ByteDecodable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that provides a default byte decoder.</p>
+
+<p>Conforming to <code>ByteDecodable</code> allows <code>readBytes(as:)</code> or <code>queryBytes(_:as:)</code> to be called without specifying an explicit decoder.</p>
+
+                        <a href="Protocols/ByteDecodable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ByteDecodable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA11ByteDecoderP"></a>
+                    <a name="//apple_ref/swift/Protocol/ByteDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA11ByteDecoderP">ByteDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A type that can decode a sequence of bytes from a VISA instrument and convert it into another type.</p>
+
+                        <a href="Protocols/ByteDecoder.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ByteDecoder</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA10InstrumentP"></a>
+                    <a name="//apple_ref/swift/Protocol/Instrument" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA10InstrumentP">Instrument</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An external instrument that can be connected to.</p>
+
+                        <a href="Protocols/Instrument.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Instrument</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA22MessageBasedInstrumentP"></a>
+                    <a name="//apple_ref/swift/Protocol/MessageBasedInstrument" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA22MessageBasedInstrumentP">MessageBasedInstrument</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An instrument that can be communicated with via strings or raw bytes.</p>
+
+                        <a href="Protocols/MessageBasedInstrument.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MessageBasedInstrument</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Instrument.html">Instrument</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:13CoreSwiftVISA7SessionP"></a>
+                    <a name="//apple_ref/swift/Protocol/Session" class="dashAnchor"></a>
+                    <a class="token" href="#/s:13CoreSwiftVISA7SessionP">Session</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A session of an instrument.</p>
+
+                        <a href="Protocols/Session.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Session</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2021-01-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

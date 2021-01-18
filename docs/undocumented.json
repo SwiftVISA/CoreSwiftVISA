@@ -1,0 +1,33 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/connorbarnes/Documents/Development/Swift/Work/VISA/CoreSwiftVISA/CoreSwiftVISA/Sources/CoreSwiftVISA/Decoding.swift",
+      "line": 38,
+      "symbol": "ByteDecodable.DefaultByteDecoder",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/connorbarnes/Documents/Development/Swift/Work/VISA/CoreSwiftVISA/CoreSwiftVISA/Sources/CoreSwiftVISA/Decoding.swift",
+      "line": 326,
+      "symbol": "DefaultBoolDecoder.Error",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/connorbarnes/Documents/Development/Swift/Work/VISA/CoreSwiftVISA/CoreSwiftVISA/Sources/CoreSwiftVISA/Decoding.swift",
+      "line": 327,
+      "symbol": "DefaultBoolDecoder.Error.notABoolean",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/connorbarnes/Documents/Development/Swift/Work/VISA/CoreSwiftVISA/CoreSwiftVISA/Sources/CoreSwiftVISA/MessageBasedInstrument.swift",
+      "line": 166,
+      "symbol": "CommunicatorError.couldNotEncode",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/connorbarnes/Documents/Development/Swift/Work/VISA/CoreSwiftVISA/CoreSwiftVISA"
+}
