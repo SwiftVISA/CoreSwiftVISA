@@ -7,6 +7,6 @@
 
 /// An external instrument that can be connected to.
 public protocol Instrument {
-	/// The session that this insturment is connected over.
+	/// The session that this instrument is connected over.
 	var session: Session { get }
 }

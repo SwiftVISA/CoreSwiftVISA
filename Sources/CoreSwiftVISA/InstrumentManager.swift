@@ -13,11 +13,12 @@ import typealias Foundation.TimeInterval
 public final class InstrumentManager {
 	/// How long to wait when trying to connect to instruments for the first time.
 	public var connectionTimeout: TimeInterval = 2.0
+  
 	// Prevent users from creating instances of this class
 	internal init() { }
 }
 
-// MARK:- Singleton
+// MARK: - Singleton
 extension InstrumentManager {
 	/// The application's shared `InstrumentManager` instance.
 	public static var shared = InstrumentManager()

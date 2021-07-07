@@ -37,6 +37,7 @@ class DecoderTests: XCTestCase {
 			XCTFail()
 		}
 	}
+  
 	/// Tests the default integer decoder.
 	func testDefaultIntDecoder() {
 		let decoder = DefaultIntDecoder()
@@ -87,6 +88,7 @@ class DecoderTests: XCTestCase {
 			}
 		}
 	}
+  
 	/// Tests the default double decoder.
 	func testDefaultDoubleDecoder() {
 		let decoder = DefaultDoubleDecoder()
@@ -164,6 +166,7 @@ class DecoderTests: XCTestCase {
 			}
 		}
 	}
+  
 	/// Tests the default boolean decoder.
 	func testDefaultBoolDecoder() {
 		let decoder = DefaultBoolDecoder()

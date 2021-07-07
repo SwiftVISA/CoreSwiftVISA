@@ -11,15 +11,32 @@ import XCTest
 /// A series of tests to test the querying functionality of the library.
 final class QueryTests: XCTestCase {
 	/// Tests default querying functionality.
-	func testQuery() {
-		let instrument = MockInstrument()
-		XCTAssertEqual(try! instrument.query("Test"), "Test")
-		XCTAssertEqual(try! instrument.query("3.14", as: Double.self), 3.14, accuracy: 1e-10)
-		XCTAssertEqual(try! instrument.query("-20", as: Int.self), -20)
-		XCTAssertEqual(try! instrument.query("OFF", as: Bool.self), false)
+	func testQuery() async {
+    let instrument = MockInstrument()
+    
+    await {
+      let result = try! await instrument.query("Test")
+      XCTAssertEqual(result, "Test")
+    }()
+    
+    await {
+      let result = try! await instrument.query("3.14", as: Double.self)
+      XCTAssertEqual(result, 3.14, accuracy: 1e-10)
+    }()
+    
+    await {
+      let result = try! await instrument.query("-20", as: Int.self)
+      XCTAssertEqual(result, -20)
+    }()
+    
+    await {
+      let result = try! await instrument.query("OFF", as: Bool.self)
+      XCTAssertEqual(result, false)
+    }()
 	}
+  
 	/// Tests custom querying functionality.
-	func testCustomDecoder() {
+	func testCustomDecoder() async {
 		let instrument = MockInstrument()
 		
 		struct LowercaseDecoder: MessageDecoder {
@@ -31,8 +48,8 @@ final class QueryTests: XCTestCase {
 		}
 		
 		let decoder = LowercaseDecoder()
-		
-		XCTAssertEqual(try! instrument.query("Some TEXT", as: String.self, using: decoder), "some text")
+    let result = try! await instrument.query("Some TEXT", as: String.self, using: decoder)
+		XCTAssertEqual(result, "some text")
 	}
 	
 	static var allTests = [
