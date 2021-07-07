@@ -13,6 +13,7 @@ CoreSwiftVISA defines base types and functionality that is used by both `NISwift
 - ``Session``
 - ``Instrument``
 - ``MessageBasedInstrument``
+- <doc:MessageBasedInstrumentGuide>
 
 ### Decoding
 
@@ -20,6 +21,7 @@ CoreSwiftVISA defines base types and functionality that is used by both `NISwift
 - ``MessageDecodable``
 - ``ByteDecoder``
 - ``ByteDecodable``
+- <doc:CustomDecoders>
 
 ### Default Decoders
 
@@ -27,3 +29,7 @@ CoreSwiftVISA defines base types and functionality that is used by both `NISwift
 - ``DefaultIntDecoder``
 - ``DefaultDoubleDecoder``
 - ``DefaultBoolDecoder``
+
+### Backends
+
+- <doc:Backends>
