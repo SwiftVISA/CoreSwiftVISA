@@ -12,11 +12,9 @@ let package = Package(
 	targets: [
 		.target(
 			name: "CoreSwiftVISA",
-			dependencies: []),
+      dependencies: []),
 		.testTarget(
 			name: "CoreSwiftVISATests",
 			dependencies: ["CoreSwiftVISA"]),
-	],
-	// TODO: Can we target lower versions of Swift?
-	swiftLanguageVersions: [.v5]
+	]
 )
