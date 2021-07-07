@@ -15,6 +15,6 @@ Although the only hard requirement is Swift 5.5+, backends may have additional r
 Installation can be done through the [Swift Package Manager](https://swift.org/package-manager/). To use the CoreSwiftVISA package in your project, include the following dependency in your `Package.swift` file.
 ```swift
 dependencies: [
-    .package(url: "https://github.com/SwiftVISA/CoreSwiftVISA.git", branch: "actor")
+    .package(url: "https://github.com/SwiftVISA/CoreSwiftVISA.git", .branch("actor"))
 ]
 ```
