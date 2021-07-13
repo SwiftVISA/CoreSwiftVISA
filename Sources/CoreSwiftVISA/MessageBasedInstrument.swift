@@ -149,9 +149,20 @@ public extension MessageBasedInstrument {
     appending terminator: String?? = .some(nil),
     encoding: String.Encoding? = nil
   ) async throws -> Int {
-    try await write(
+    let terminator: String? = {
+      switch terminator {
+      case .some(nil):
+        return attributes.writeTerminator
+      case .some(.some(let custom)):
+        return custom
+      case .none:
+        return nil
+      }
+    }()
+    
+    return try await write(
       string,
-      appending: terminator ?? attributes.writeTerminator,
+      appending: terminator,
       encoding: encoding ?? attributes.encoding
     )
   }
@@ -164,10 +175,16 @@ public extension MessageBasedInstrument {
   /// - Returns: The number of bytes that were written.
   @discardableResult
   func writeBytes(_ bytes: Data, appending terminator: Data?? = .some(nil)) async throws -> Int {
-    guard let terminator = terminator ??
-            attributes.writeTerminator.data(using: attributes.encoding) else {
-              throw CommunicatorError.couldNotEncode
-            }
+    let terminator: Data? = {
+      switch terminator {
+      case .some(nil):
+        return attributes.writeTerminator.data(using: attributes.encoding)
+      case .some(.some(let custom)):
+        return custom
+      case .none:
+        return nil
+      }
+    }()
     
     return try await writeBytes(bytes, appending: terminator)
   }
