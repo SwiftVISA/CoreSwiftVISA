@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
 	name: "CoreSwiftVISA",
+  platforms: [.macOS("12.0")],
 	products: [
 		.library(
 			name: "CoreSwiftVISA",
