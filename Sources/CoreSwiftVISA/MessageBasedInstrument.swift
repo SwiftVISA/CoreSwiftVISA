@@ -35,6 +35,7 @@ public protocol MessageBasedInstrument: Instrument {
   /// - Returns: The bytes read from the device.
   func readBytes(length: Int, chunkSize: Int) async throws -> Data
   
+    
   /// Reads bytes from the device until the given sequence of data is reached.
   /// - Parameters:
   ///   - maxLength: The maximum number of bytes to read.
@@ -50,6 +51,7 @@ public protocol MessageBasedInstrument: Instrument {
     chunkSize: Int
   ) async throws -> Data
   
+    
   /// Writes a string to the device.
   /// - Parameters:
   ///   - string: The string to write to the device.
@@ -73,6 +75,7 @@ public protocol MessageBasedInstrument: Instrument {
   @discardableResult
   func writeBytes(_ data: Data, appending terminator: Data?) async throws -> Int
 }
+
 
 // MARK: - Convenience Methods
 public extension MessageBasedInstrument {
@@ -98,6 +101,7 @@ public extension MessageBasedInstrument {
     )
   }
   
+    
   /// Reads the given number of bytes from the device.
   /// - Parameters:
   ///   - length: The number of bytes to read.
@@ -136,6 +140,7 @@ public extension MessageBasedInstrument {
     )
   }
   
+    
   /// Writes a string to the device.
   /// - Parameters:
   ///   - string: The string to write to the device.

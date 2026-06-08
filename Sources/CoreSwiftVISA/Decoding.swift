@@ -80,7 +80,7 @@ public struct DefaultStringDecoder: MessageDecoder {
   }
   
   /// If not `nil`, the decoder uses this function to decode strings.
-  public static var customDecode: ((String) throws -> String)? = nil
+    public static let customDecode: (@Sendable (String) throws -> String)? = nil
 }
 
 extension String: MessageDecodable {
@@ -188,7 +188,7 @@ public struct DefaultIntDecoder: MessageDecoder {
   }
   
   /// If not `nil`, the decoder uses this function to decode strings.
-  public static var customDecode: ((String) throws -> Int)? = nil
+  public static let customDecode: (@Sendable (String) throws -> Int)? = nil
   
   /// An error that results from trying to decode a message to an integer.
   public enum Error: Swift.Error {
@@ -272,7 +272,7 @@ public struct DefaultDoubleDecoder: MessageDecoder {
   }
   
   /// If not `nil`, the decoder uses this function to decode strings.
-  public static var customDecode: ((String) throws -> Double)? = nil
+  public static let customDecode: (@Sendable (String) throws -> Double)? = nil
   
   /// An error that results form trying to decode a message to a number.
   public enum Error: Swift.Error {
@@ -344,7 +344,7 @@ public struct DefaultBoolDecoder: MessageDecoder {
   }
   
   /// If not `nil`, the decoder uses this function to decode strings.
-  public static var customDecode: ((String) throws -> Bool)? = nil
+  public static let customDecode: (@Sendable (String) throws -> Bool)? = nil
   
   public enum Error: Swift.Error {
     case notABoolean

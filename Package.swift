@@ -1,10 +1,10 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.3
 
 import PackageDescription
 
 let package = Package(
 	name: "CoreSwiftVISA",
-  platforms: [.macOS("12.0")],
+    platforms: [.macOS(.v26)],
 	products: [
 		.library(
 			name: "CoreSwiftVISA",
