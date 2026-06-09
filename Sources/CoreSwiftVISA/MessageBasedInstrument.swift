@@ -10,8 +10,9 @@ import Foundation
 /// An instrument that can be communicated with via strings or raw bytes.
 public protocol MessageBasedInstrument: Instrument {
   /// Instrument attributes, such as terminators and encodings.
-  var attributes: MessageBasedInstrumentAttributes { get set }
+    var attributes: MessageBasedInstrumentAttributes { get set }
   
+    
   /// Reads string data from the device until the terminator is reached.
   /// - Parameters:
   ///   - terminator: The string to end reading at.
@@ -27,6 +28,7 @@ public protocol MessageBasedInstrument: Instrument {
     chunkSize: Int
   ) async throws -> String
   
+    
   /// Reads the given number of bytes from the device.
   /// - Parameters:
   ///   - length: The number of bytes to read.

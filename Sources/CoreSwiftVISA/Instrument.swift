@@ -6,7 +6,7 @@
 //
 
 /// An external instrument that can be connected to.
-public protocol Instrument {
+public protocol Instrument: Actor {
 	/// The session that this instrument is connected over.
 	var session: Session { get }
 }
