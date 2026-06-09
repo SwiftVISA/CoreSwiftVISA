@@ -8,7 +8,7 @@
 import Foundation
 
 /// A session of an instrument.
-public protocol Session {
+public protocol Session: Actor {
 	/// Closes the session. The instrument owning this session will no longer be able to read or write data.
 	func close() async throws
   
